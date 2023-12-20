@@ -1,9 +1,8 @@
 import { PortableText } from "@portabletext/react";
-import { Header2 } from "@/typography/header";
-import { Prose } from "@/typography/paragraph";
-
 import { getPost } from "@/lib/sanity.queries";
 import { getClient } from "@/lib/sanity.client";
+import { Article } from "@/components/Article";
+import { alefFont } from "@/fonts";
 
 const client = getClient();
 
@@ -15,11 +14,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <>
-      <Header2>{post.title}</Header2>
-      <Prose>
-        <PortableText value={post.body} />
-      </Prose>
-    </>
+    <Article>
+      <h1 className={alefFont.className}>{post.title}</h1>
+      <PortableText value={post.body} />
+    </Article>
   );
 }

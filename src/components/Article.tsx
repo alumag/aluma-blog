@@ -1,3 +1,5 @@
+import { rubikFont } from "@/fonts";
+
 export function Article({
   className,
   children,
@@ -7,6 +9,7 @@ export function Article({
       className={`prose dark:prose-invert md:prose-lg lg:prose-xl
       prose-headings:underline prose-headings:decoration-[rgb(223,209,224)]
       prose-blockquote:border-0
+      ${rubikFont.className}
        ${className ?? ""}`}
     >
       {children}
