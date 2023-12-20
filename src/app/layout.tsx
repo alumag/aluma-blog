@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { defaultFont } from "@/fonts";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "אלומה",
@@ -17,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl" className="antialiased">
       <body
-        className={`min-h-screen w-screen bg-white dark:bg-black ${inter.className}`}
+        className={`min-h-screen w-screen bg-white dark:bg-black ${defaultFont.className}`}
       >
         <main className="px-8 md:px-24 py-6">{children}</main>
         <footer className="fixed bottom-0 w-full">
