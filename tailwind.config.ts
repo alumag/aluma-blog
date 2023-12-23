@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import colors from 'tailwindcss/colors';
 
 const config: Config = {
   darkMode: 'class',
@@ -7,6 +8,7 @@ const config: Config = {
   ],
   theme: {
     colors: {
+      ...colors,
       app: {
         pink: '#dfd1e0',
         purple: '#aab8c8',
