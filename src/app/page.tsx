@@ -10,7 +10,10 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className="text-5xl font-extrabold text-black dark:text-white pb-2 text-center underline bg-clip-content decoration-[rgb(223,209,224)] hover:bg-[rgb(223,209,224)]">
+      <h1
+        className="text-5xl font-alef font-extrabold text-black dark:text-white text-center
+        underline bg-clip-content decoration-app-pink hover:bg-app-pink pb-2"
+      >
         אלומה גלברד
       </h1>
       <Article>

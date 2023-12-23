@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { defaultFont } from "@/fonts";
+import { alefFont, defaultFont, rubikFont } from "@/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,13 +13,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="he" dir="rtl" className="antialiased">
-      <body
-        className={`min-h-screen w-screen bg-white dark:bg-black ${defaultFont.className}`}
-      >
+    <html
+      lang="he"
+      dir="rtl"
+      className={`antialiased ${defaultFont.variable} ${rubikFont.variable} ${alefFont.variable}`}
+    >
+      <body className="min-h-screen w-screen bg-white dark:bg-black">
         <main className="px-8 md:px-24 py-6">{children}</main>
         <footer className="fixed bottom-0 w-full">
-          <div className="h-12 w-full bg-gradient-to-t to-transparent from-[rgba(170,184,200,0.6)] dark:from-[rgba(170,184,200,0.2)]" />
+          <div className="h-12 w-full bg-gradient-to-t to-transparent from-app-blue/60 dark:from-app-blue/20" />
         </footer>
       </body>
     </html>
