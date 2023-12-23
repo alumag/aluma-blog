@@ -2,6 +2,7 @@ import { PortableText } from "@portabletext/react";
 import { getPost } from "@/lib/sanity.queries";
 import { getClient } from "@/lib/sanity.client";
 import { Article } from "@/components/Article";
+import { SocialMedia } from "@/components/SocialMedia";
 
 const client = getClient();
 
@@ -16,9 +17,11 @@ export default async function Home() {
       >
         אלומה גלברד
       </h1>
+      <SocialMedia />
       <Article>
         <PortableText value={data.body} />
       </Article>
+      <hr className="border-2 my-2 border-app-blue" />
     </>
   );
 }
