@@ -35,7 +35,7 @@ export async function SocialMedia({ className }: { className?: string }) {
     <div className={`flex justify-center sm:justify-end ${className ?? ""}`}>
       {socialMedia.map(({ icon: Icon, href, key }) => (
         <a href={href} key={key}>
-          <Icon className="w-5 h-5 sm:w-7 sm:h-7 m-0.5 sm:m-1.5 fill-app-purple hover:fill-app-pink" />
+          <Icon className="m-0.5 h-5 w-5 fill-app-purple hover:fill-app-pink sm:m-1.5 sm:h-7 sm:w-7" />
         </a>
       ))}
     </div>

@@ -4,12 +4,12 @@ export function Article({
 }: React.PropsWithChildren<{ className?: string }>) {
   return (
     <article
-      className={`prose dark:prose-invert md:prose-lg lg:prose-xl max-w-none
-      rtl:prose-headings:font-alef prose-headings:underline prose-headings:decoration-app-pink
-      rtl:prose-p:font-rubik
-      rtl:prose-strong:text-current rtl:prose-a:text-current
-      rtl:prose-blockquote:font-rubik rtl:prose-blockquote:border-0
-      prose-hr:border-app-blue
+      className={`prose max-w-none dark:prose-invert md:prose-lg lg:prose-xl
+      prose-headings:underline prose-headings:decoration-app-pink prose-hr:border-app-blue
+      rtl:prose-headings:font-alef
+      rtl:prose-p:font-rubik rtl:prose-a:text-current
+      rtl:prose-blockquote:border-0 rtl:prose-blockquote:font-rubik
+      rtl:prose-strong:text-current
        ${className ?? ""}`}
     >
       {children}

@@ -7,19 +7,19 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center px-4 md:px-8 lg:px-24 py-8">
-      <p className="text-6xl md:text-7xl lg:text-9xl font-bold tracking-wider text-gray-300">
+    <div className="flex flex-col items-center justify-center px-4 py-8 md:px-8 lg:px-24">
+      <p className="text-6xl font-bold tracking-wider text-gray-300 md:text-7xl lg:text-9xl">
         404
       </p>
-      <p className="text-md md:text-3xl lg:text-5xl font-bold text-gray-500 mt-4">
+      <p className="text-md mt-4 font-bold text-gray-500 md:text-3xl lg:text-5xl">
         Page Not Found
       </p>
-      <p className="text-gray-500 mt-4 pb-4 border-b-2 text-center">
+      <p className="mt-4 border-b-2 pb-4 text-center text-gray-500">
         אני מצטערת, לא מצאתי את מה שחיפשת
       </p>
       <Link
         href=".."
-        className="flex items-center space-x-2 bg-app-pink hover:bg-app-blue text-gray-100 px-4 py-2 mt-6 rounded transition duration-150"
+        className="mt-6 flex items-center space-x-2 rounded bg-app-pink px-4 py-2 text-gray-100 transition duration-150 hover:bg-app-blue"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

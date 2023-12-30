@@ -1,4 +1,3 @@
-import { Article } from "@/components/Article";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -8,9 +7,9 @@ export const metadata: Metadata = {
 
 export default function Blog() {
   return (
-    <div className="flex flex-col items-center justify-center px-4 md:px-8 lg:px-24 py-8">
+    <div className="flex flex-col items-center justify-center px-4 py-8 md:px-8 lg:px-24">
       <svg
-        className="h-20 w-20 sm:h-32 sm:w-32 fill-app-purple"
+        className="h-20 w-20 fill-app-purple sm:h-32 sm:w-32"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 500 500"
@@ -27,15 +26,15 @@ export default function Blog() {
           />
         </g>
       </svg>
-      <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-500 mt-4">
+      <p className="mt-4 text-3xl font-bold text-gray-500 md:text-4xl lg:text-5xl">
         בקרוב!
       </p>
-      <p className="text-gray-500 mt-4 pb-4 border-b-2 text-center">
+      <p className="mt-4 border-b-2 pb-4 text-center text-gray-500">
         העמוד הזה כרגע בבניה, יום אחד הוא יהיה כאן...
       </p>
       <Link
         href=".."
-        className="flex items-center space-x-2 bg-app-pink hover:bg-app-blue text-gray-100 px-4 py-2 mt-6 rounded transition duration-150"
+        className="mt-6 flex items-center space-x-2 rounded bg-app-pink px-4 py-2 text-gray-100 transition duration-150 hover:bg-app-blue"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

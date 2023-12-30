@@ -12,8 +12,8 @@ export default async function Home() {
   return (
     <>
       <h1
-        className="text-5xl font-alef font-extrabold text-black dark:text-white text-center
-        underline bg-clip-content decoration-app-pink hover:bg-app-pink pb-2"
+        className="bg-clip-content pb-2 text-center font-alef text-5xl font-extrabold
+        text-black underline decoration-app-pink hover:bg-app-pink dark:text-white"
       >
         אלומה גלברד
       </h1>
@@ -21,7 +21,7 @@ export default async function Home() {
       <Article>
         <PortableText value={data.body} />
       </Article>
-      <hr className="border-2 my-2 border-app-blue" />
+      <hr className="my-2 border-2 border-app-blue" />
     </>
   );
 }
