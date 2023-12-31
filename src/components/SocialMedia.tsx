@@ -1,7 +1,7 @@
 "use server";
 
 import { getClient } from "@/lib/sanity.client";
-import { getSocialMediaLinks } from "@/lib/sanity.queries";
+import { getSocialMediaLinks } from "@/lib/sanity.social-media-links";
 
 const client = getClient();
 

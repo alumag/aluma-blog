@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 import { alefFont, defaultFont, rubikFont } from "@/fonts";
-import { getSiteMetadata } from "@/lib/sanity.queries";
+import { getSiteMetadata } from "@/lib/sanity.site-metadata";
 import { getClient } from "@/lib/sanity.client";
 import "./globals.css";
 
