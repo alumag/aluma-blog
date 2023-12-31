@@ -57,8 +57,40 @@ export async function getSiteMetadata(
 }
 
 export interface SiteMetadata {
+  _type: "siteMetadata";
+  _id: string;
+  _createdAt: string;
+  _updatedAt: string;
   siteName: string;
   description: string;
   dir: "rtl" | "ltr";
   language: Language;
+}
+
+export const socialMediaLinksQuery = groq`*[_type == "socialMediaLink" && hidden == false] | order(_createdAt desc)`;
+
+export async function getSocialMediaLinks(
+  client: SanityClient,
+): Promise<SocialMediaLink[]> {
+  return await client.fetch(socialMediaLinksQuery);
+}
+
+export interface SocialMediaLink {
+  _type: "socialMediaLink";
+  _id: string;
+  _createdAt: string;
+  _updatedAt: string;
+  type:
+    | "discord"
+    | "telegram"
+    | "linkedin"
+    | "github"
+    | "reddit"
+    | "duolingo"
+    | "facebook"
+    | "instagram"
+    | "twitter"
+    | "email";
+  link: string;
+  hidden: boolean;
 }
