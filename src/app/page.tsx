@@ -7,7 +7,7 @@ import { SocialMedia } from "@/components/SocialMedia";
 const client = getClient();
 
 export default async function Home() {
-  const data = await getPost(client, "/homepage");
+  const data = await getPost(client, "aluma-gelbard");
 
   return (
     <>
@@ -15,7 +15,7 @@ export default async function Home() {
         className="bg-clip-content pb-2 text-center font-alef text-5xl font-extrabold
         text-black underline decoration-app-pink hover:bg-app-pink dark:text-white"
       >
-        אלומה גלברד
+        {data.title}
       </h1>
       <SocialMedia />
       <Article>

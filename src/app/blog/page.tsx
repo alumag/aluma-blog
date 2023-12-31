@@ -1,11 +1,35 @@
+import { getLocaleCookie } from "@/core/getLocaleCookie";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "אלומה/בלוג",
+const heContent = {
+  title: "בלוג",
+  soon: "בקרוב!",
+  message: "העמוד הזה כרגע בבניה, יום אחד הוא יהיה כאן...",
+  back: "בינתיים אפשר לחזור אחורה",
 };
 
+const enContent = {
+  title: "Blog",
+  soon: "Coming Soon!",
+  message:
+    "This page is currently under construction, one day it will be here...",
+  back: "You can always go back",
+};
+
+export function generateMetadata(): Metadata {
+  const locale = getLocaleCookie();
+  const content = locale === "he" ? heContent : enContent;
+
+  return {
+    title: content.title,
+  };
+}
+
 export default function Blog() {
+  const locale = getLocaleCookie();
+  const content = locale === "he" ? heContent : enContent;
+
   return (
     <div className="flex flex-col items-center justify-center px-4 py-8 md:px-8 lg:px-24">
       <svg
@@ -26,11 +50,11 @@ export default function Blog() {
           />
         </g>
       </svg>
-      <p className="mt-4 text-3xl font-bold text-gray-500 md:text-4xl lg:text-5xl">
-        בקרוב!
+      <p className="mt-4 text-3xl font-bold text-gray-500 rtl:font-alef md:text-4xl lg:text-5xl">
+        {content.soon}
       </p>
-      <p className="mt-4 border-b-2 pb-4 text-center text-gray-500">
-        העמוד הזה כרגע בבניה, יום אחד הוא יהיה כאן...
+      <p className="mt-4 border-b-2 pb-4 text-center text-gray-500 rtl:font-rubik">
+        {content.message}
       </p>
       <Link
         href=".."
@@ -44,7 +68,7 @@ export default function Blog() {
         >
           <path d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"></path>
         </svg>
-        <span>בינתיים אפשר לחזור אחורה</span>
+        <span className="rtl:font-rubik">{content.back}</span>
       </Link>
     </div>
   );

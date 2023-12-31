@@ -1,21 +1,34 @@
-import type { Metadata } from "next";
+import { type Metadata } from "next";
 import { alefFont, defaultFont, rubikFont } from "@/fonts";
+import { getSiteMetadata } from "@/lib/sanity.queries";
+import { getClient } from "@/lib/sanity.client";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "אלומה",
-  description: "פורטפוליו ובלוג של אלומה גלברד",
-};
+const client = getClient();
 
-export default function RootLayout({
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await getSiteMetadata(client);
+
+  return {
+    title: {
+      template: `%s / ${data.siteName}`,
+      default: data.siteName, // a default is required when creating a template
+    },
+    description: data.description,
+  };
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const data = await getSiteMetadata(client);
+
   return (
     <html
-      lang="he"
-      dir="rtl"
+      lang={data.language}
+      dir={data.dir}
       className={`antialiased ${defaultFont.variable} ${rubikFont.variable} ${alefFont.variable}`}
     >
       <body className="min-h-screen w-screen bg-white dark:bg-black">

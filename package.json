@@ -11,6 +11,8 @@
     "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.2",
+    "negotiator": "^0.6.3",
     "next": "14.0.4",
     "next-sanity": "^7.0.4",
     "react": "^18",
@@ -18,6 +20,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
+    "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
