@@ -6,14 +6,32 @@ import { getLocaleCookie } from "@/core/getLocaleCookie";
 import { Language } from "./sanity.core";
 
 export const postsQuery = groq`
-  *[_type == "post" && language == $language && defined(slug.current)] | order(_createdAt desc)`;
+  *[_type == "post" && language == $language && defined(slug.current) && $tag in tags[]._key] | order(publishedAt desc)[]{
+    _id,
+    title,
+    slug,
+    publishedAt,
+    body,
+    language,
+    "gallery": gallery->{
+      "images": images[]{
+        ...,
+        "alt": alt[$language],
+        "url": asset->url,
+      },
+      display,
+      zoom,
+    },
+    "tags": tags[].value
+  }`;
 
 export async function getPosts(
   client: SanityClient,
+  tag: string,
   language?: Language,
 ): Promise<Post[]> {
   const locale = language ?? getLocaleCookie();
-  return await client.fetch(postsQuery, { language: locale });
+  return await client.fetch(postsQuery, { language: locale, tag });
 }
 
 export const postBySlugQuery = groq`
@@ -28,10 +46,12 @@ export const postBySlugQuery = groq`
     "images": images[]{
       ...,
       "alt": alt[$language],
+      "url": asset->url,
     },
     display,
     zoom,
-  }
+  },
+  "tags": tags[].value
 }`;
 
 export async function getPost(
@@ -51,9 +71,9 @@ export const postSlugsQuery = groq`
 `;
 
 export interface Gallery {
-  images: (Image & { alt: string })[];
-  display?: "stacked" | "inline" | "carousel";
-  zoom?: boolean;
+  images: (Image & { alt: string; url: string })[];
+  display: "stacked" | "inline" | "carousel" | null;
+  zoom: boolean | null;
 }
 
 export type Post = SanityDocument<{
@@ -64,4 +84,5 @@ export type Post = SanityDocument<{
   body: PortableTextBlock[];
   language: Language;
   gallery: Gallery;
+  tags: string[] | null;
 }>;
