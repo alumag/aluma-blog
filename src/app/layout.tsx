@@ -1,7 +1,9 @@
 import { type Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { alefFont, defaultFont, rubikFont } from "@/fonts";
 import { getSiteMetadata } from "@/lib/sanity.site-metadata";
 import { getClient } from "@/lib/sanity.client";
+import { gtmId } from "@/lib/gtm";
 import "./globals.css";
 
 const client = getClient();
@@ -37,6 +39,7 @@ export default async function RootLayout({
           <div className="h-12 w-full bg-gradient-to-t from-app-purple/60 to-transparent dark:from-app-purple/20" />
         </footer>
       </body>
+      <GoogleTagManager gtmId={gtmId} />
     </html>
   );
 }
