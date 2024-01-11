@@ -19,15 +19,18 @@ export default async function Page({ params: { slug } }: { params: Params }) {
   const data = await getPost(client, slug);
   return (
     <>
-      <div className="sm:flex sm:justify-between">
-        <Article>
+      <div className="lg:flex lg:justify-between">
+        <Article className="max-w-screen-md">
           <h1>{data.title}</h1>
           <PortableText value={data.body} />
           <p className="text-sm">
             <LocalTime date={data.publishedAt} />
           </p>
         </Article>
-        <ImageGallery gallery={data.gallery} />
+        <ImageGallery
+          className="min-w-full lg:min-w-fit lg:grow"
+          gallery={data.gallery}
+        />
       </div>
 
       <hr className="my-2 border-2 border-app-blue" />
@@ -35,9 +38,19 @@ export default async function Page({ params: { slug } }: { params: Params }) {
   );
 }
 
-function ImageGallery({ gallery }: { gallery: Gallery }) {
+function ImageGallery({
+  gallery,
+  className,
+}: {
+  gallery: Gallery;
+  className?: string;
+}) {
   return (
-    <div className="h-56 object-fill sm:h-96 sm:w-96 lg:h-[30rem] lg:w-[30rem]">
+    <div
+      className={`h-56 object-fill sm:h-96 sm:w-96 lg:h-[30rem] lg:w-[30rem] ${
+        className ?? ""
+      }`}
+    >
       <Carousel>
         {gallery.images.map((image) => (
           <Fragment key={(image._key as string) ?? image.alt}>
