@@ -1,11 +1,12 @@
 "use server";
 
 import { Fragment } from "react";
+import { notFound } from "next/navigation";
+import { Carousel } from "flowbite-react";
 import { PortableText } from "@portabletext/react";
-import { Article } from "@/components/Article";
 import { getClient } from "@/lib/sanity.client";
 import { Gallery, getPost } from "@/lib/sanity.queries";
-import { Carousel } from "flowbite-react";
+import { Article } from "@/components/Article";
 import { SanityImage } from "@/components/SanityImage";
 import { LocalTime } from "@/components/LocalTime";
 
@@ -17,6 +18,11 @@ type Params = {
 
 export default async function Page({ params: { slug } }: { params: Params }) {
   const data = await getPost(client, slug);
+
+  if (data === null) {
+    notFound();
+  }
+
   return (
     <>
       <div className="xl:flex xl:justify-between">
