@@ -19,18 +19,15 @@ export default async function Page({ params: { slug } }: { params: Params }) {
   const data = await getPost(client, slug);
   return (
     <>
-      <div className="lg:flex lg:justify-between">
-        <Article className="max-w-screen-md">
+      <div className="xl:flex xl:justify-between">
+        <Article className="max-w-prose">
           <h1>{data.title}</h1>
           <PortableText value={data.body} />
           <p className="text-sm">
             <LocalTime date={data.publishedAt} />
           </p>
         </Article>
-        <ImageGallery
-          className="min-w-full lg:min-w-fit lg:grow"
-          gallery={data.gallery}
-        />
+        <ImageGallery gallery={data.gallery} />
       </div>
 
       <hr className="my-2 border-2 border-app-blue" />
@@ -47,7 +44,7 @@ function ImageGallery({
 }) {
   return (
     <div
-      className={`h-56 object-fill sm:h-96 sm:w-96 lg:h-[30rem] lg:w-[30rem] ${
+      className={`h-56 w-56 object-fill sm:h-96 sm:w-96 lg:h-[40rem] lg:w-[40rem] ${
         className ?? ""
       }`}
     >
