@@ -52,9 +52,9 @@ export default async function RootLayout({
         <footer className="fixed bottom-0 w-full">
           <div className="h-12 w-full bg-gradient-to-t from-app-purple/60 to-transparent dark:from-app-purple/20" />
         </footer>
+        <SpeedInsights />
       </body>
       <GoogleTagManager gtmId={gtmId} />
-      <SpeedInsights />
     </html>
   );
 }
