@@ -26,14 +26,14 @@ export default async function Page({ params: { slug } }: { params: Params }) {
   return (
     <>
       <div className="xl:flex xl:justify-between">
-        <Article className="max-w-prose">
+        <Article className={data.gallery ? "max-w-prose" : "max-w-none"}>
           <h1>{data.title}</h1>
           <PortableText value={data.body} />
           <p className="text-sm">
             <LocalTime date={data.publishedAt} />
           </p>
         </Article>
-        <ImageGallery gallery={data.gallery} />
+        {data.gallery && <ImageGallery gallery={data.gallery} />}
       </div>
 
       <hr className="my-2 border-2 border-app-blue" />
