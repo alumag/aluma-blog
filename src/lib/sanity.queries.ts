@@ -83,6 +83,6 @@ export type Post = SanityDocument<{
   publishedAt: string;
   body: PortableTextBlock[];
   language: Language;
-  gallery: Gallery;
+  gallery: Gallery | null;
   tags: string[] | null;
 }>;
