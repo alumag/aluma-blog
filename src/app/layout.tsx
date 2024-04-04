@@ -1,5 +1,6 @@
 import { type Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { alefFont, defaultFont, rubikFont } from "@/fonts";
 import { getSiteMetadata } from "@/lib/sanity.site-metadata";
 import { getClient } from "@/lib/sanity.client";
@@ -53,6 +54,7 @@ export default async function RootLayout({
         </footer>
       </body>
       <GoogleTagManager gtmId={gtmId} />
+      <SpeedInsights />
     </html>
   );
 }
