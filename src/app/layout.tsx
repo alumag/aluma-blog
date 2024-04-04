@@ -12,18 +12,21 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = await getSiteMetadata(client);
 
   return {
+    metadataBase:
+      data.language === "he"
+        ? new URL("https://he.alumagelbard.com")
+        : new URL("https://alumagelbard.com"),
     title: {
-      template:
-        data.dir === "ltr" ? `%s / ${data.siteName}` : `${data.siteName} / %s`,
-      default: data.siteName, // a default is required when creating a template
+      template: `${data.title} / %s`,
+      default: data.title, // a default is required when creating a template
     },
     description: data.description,
     openGraph: {
       type: "website",
-      locale: data.language === "he" ? "he_IL" : "en_US",
+      locale: data.locale,
       countryName: "Israel",
       siteName: data.siteName,
-      title: data.siteName,
+      title: data.title,
       description: data.description,
       images: "/images/20230521_110544.jpg",
     },
