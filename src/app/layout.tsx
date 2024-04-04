@@ -13,10 +13,20 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: {
-      template: `%s / ${data.siteName}`,
+      template:
+        data.dir === "ltr" ? `%s / ${data.siteName}` : `${data.siteName} / %s`,
       default: data.siteName, // a default is required when creating a template
     },
     description: data.description,
+    openGraph: {
+      type: "website",
+      locale: data.language === "he" ? "he_IL" : "en_US",
+      countryName: "Israel",
+      siteName: data.siteName,
+      title: data.siteName,
+      description: data.description,
+      images: "/images/20230521_110544.jpg",
+    },
   };
 }
 
