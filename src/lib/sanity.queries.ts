@@ -5,6 +5,23 @@ import { type SanityClient, type SanityDocument } from "next-sanity";
 import { getLocaleCookie } from "@/core/getLocaleCookie";
 import { Language } from "./sanity.core";
 
+export const postsSitemapQuery = groq`
+*[_type == "post" && language == $language && defined(slug.current) && $tag in tags[]._key] | order(publishedAt desc)[]{
+  _id,
+  slug,
+  publishedAt,
+  _updatedAt
+}`;
+
+export async function getPostsSitemap(
+  client: SanityClient,
+  tag: string,
+  language?: Language,
+): Promise<{ _id: string, slug: Slug, publishedAt: string, _updatedAt: string }[]> {
+  const locale = language ?? getLocaleCookie();
+  return await client.fetch(postsSitemapQuery, { language: locale, tag });
+}
+
 export const postsQuery = groq`
   *[_type == "post" && language == $language && defined(slug.current) && $tag in tags[]._key] | order(publishedAt desc)[]{
     _id,
