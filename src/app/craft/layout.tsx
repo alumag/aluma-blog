@@ -2,10 +2,16 @@
 
 import NextBreadcrumb from "@/components/NextBreadcrumb";
 import { getLocaleCookie } from "@/core/getLocaleCookie";
+import { getClient } from "@/lib/sanity.client";
+import { getSiteMetadata } from "@/lib/sanity.site-metadata";
 import type { Metadata } from "next";
 
+const client = getClient();
+
 export async function generateMetadata(): Promise<Metadata> {
+  const data = await getSiteMetadata(client);
   const locale = getLocaleCookie();
+
   return {
     title: locale === "he" ? "יצירה" : "craft",
     description:
@@ -20,9 +26,9 @@ export async function generateMetadata(): Promise<Metadata> {
           ? "אלומה גלברד - בלוג יצירה"
           : "Aluma Gelbard - Craft Blog",
       type: "website",
-      locale: locale === "he" ? "he_IL" : "en_US",
-      siteName: locale === "he" ? "אלומה גלברד" : "Aluma Gelbard",
-      images: "/images/20230521_110544.jpg",
+      locale: data.locale,
+      siteName: data.siteName,
+      images: "/images/20200321_172438.jpg",
     },
   };
 }
