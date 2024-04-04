@@ -42,7 +42,7 @@ export default async function Layout({
     <>
       <NextBreadcrumb
         homeElement={<span>❤️</span>}
-        separator={<span> / </span>}
+        separator={<span aria-hidden="true"> / </span>}
         activeClasses="text-app-purple dark:text-app-pink"
         containerClasses="flex py-5"
         listClasses="hover:underline mx-2 font-bold"

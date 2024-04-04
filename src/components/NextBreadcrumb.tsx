@@ -26,27 +26,33 @@ const NextBreadcrumb = ({
   const pathNames = paths.split("/").filter((path) => path);
 
   return (
-    <div dir="ltr" className={className}>
-      <ul className={containerClasses}>
+    <nav dir="ltr" className={className} aria-label="breadcrumbs">
+      <ol className={containerClasses}>
         <li className={listClasses}>
           <Link href={"/"}>{homeElement}</Link>
         </li>
         {pathNames.length > 0 && separator}
         {pathNames.map((link, index) => {
-          let href = `/${pathNames.slice(0, index + 1).join("/")}`;
-          let itemClasses =
+          const href = `/${pathNames.slice(0, index + 1).join("/")}`;
+          const itemClasses =
             paths === href ? `${listClasses} ${activeClasses}` : listClasses;
           return (
             <React.Fragment key={index}>
               <li className={itemClasses}>
-                <Link href={href}>{link}</Link>
+                {index === pathNames.length - 1 ? (
+                  <Link href={href} aria-current="location">
+                    {link}
+                  </Link>
+                ) : (
+                  <Link href={href}>{link}</Link>
+                )}
               </li>
               {pathNames.length !== index + 1 && separator}
             </React.Fragment>
           );
         })}
-      </ul>
-    </div>
+      </ol>
+    </nav>
   );
 };
 
