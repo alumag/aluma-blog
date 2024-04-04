@@ -1,5 +1,3 @@
-"use server";
-
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 import { Article } from "@/components/Article";
@@ -10,8 +8,19 @@ import { LocalTime } from "@/components/LocalTime";
 import { Gallery } from "@/lib/sanity.queries";
 import { Carousel } from "flowbite-react";
 import { SanityImage } from "@/components/SanityImage";
+import { Metadata } from "next";
 
 const client = getClient();
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/craft",
+    languages: {
+      en: "https://alumagelbard.com/craft",
+      he: "https://he.alumagelbard.com/craft",
+    },
+  },
+};
 
 export default async function Craft() {
   const posts = await getPosts(client, "craft");
