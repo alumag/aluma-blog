@@ -3,8 +3,19 @@ import { getPost } from "@/lib/sanity.queries";
 import { getClient } from "@/lib/sanity.client";
 import { Article } from "@/components/Article";
 import { SocialMedia } from "@/components/SocialMedia";
+import { Metadata } from "next";
 
 const client = getClient();
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: "https://alumagelbard.com/",
+      he: "https://he.alumagelbard.com/",
+    },
+  },
+};
 
 export default async function Home() {
   const data = await getPost(client, "aluma-gelbard");
