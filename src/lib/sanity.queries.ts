@@ -6,7 +6,7 @@ import { getLocaleCookie } from "@/core/getLocaleCookie";
 import { Language } from "./sanity.core";
 
 export const postsSitemapQuery = groq`
-*[_type == "post" && language == $language && defined(slug.current) && $tag in tags[]._key] | order(publishedAt desc)[]{
+*[_type == "post" && language == $language && defined(slug.current) && $tag in tags[]._key] | order(_updatedAt desc)[]{
   _id,
   slug,
   publishedAt,
@@ -28,6 +28,7 @@ export const postsQuery = groq`
     title,
     slug,
     publishedAt,
+    _updatedAt,
     body,
     language,
     "gallery": gallery->{
@@ -57,6 +58,7 @@ export const postBySlugQuery = groq`
   title,
   slug,
   publishedAt,
+  _updatedAt,
   body,
   language,
   "gallery": gallery->{
