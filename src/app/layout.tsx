@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: data.locale,
       countryName: "Israel",
       siteName: data.siteName,
-      title: data.title,
+      title: data.siteName,
       description: data.description,
       images: "/images/20230521_110544.jpg",
     },
