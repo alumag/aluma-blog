@@ -21,7 +21,8 @@ type SocialMediaLink = SanityDocument<{
     | "facebook"
     | "instagram"
     | "twitter"
-    | "email";
+    | "email"
+    | "goodreads";
   link: string;
   hidden: boolean;
 }>;
