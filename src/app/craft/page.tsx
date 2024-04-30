@@ -9,6 +9,7 @@ import { Gallery } from "@/lib/sanity.queries";
 import { Carousel } from "flowbite-react";
 import { SanityImage } from "@/components/SanityImage";
 import { Metadata } from "next";
+import { Badge, badgeVariants } from "@/components/ui/badge";
 
 const client = getClient();
 
@@ -22,8 +23,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Craft() {
-  const posts = await getPosts(client, "craft");
+export default async function Craft({
+  searchParams: { tag },
+}: {
+  searchParams: { tag?: string };
+}) {
+  console.log("tag", tag);
+  const posts = (await getPosts(client, "craft")).filter((post) =>
+    tag !== undefined ? post.tags && post.tags.includes(tag) : true,
+  );
 
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
@@ -51,6 +59,21 @@ function Card({ post }: { post: Post }) {
           </p>
           <PortableText value={post.body} />
         </Article>
+        {post.tags && (
+          <div>
+            {post.tags
+              .filter((tag) => tag !== "craft")
+              .map((tag) => (
+                <Link
+                  key={tag}
+                  className={badgeVariants()}
+                  href={`?tag=${tag}`}
+                >
+                  #{tag}
+                </Link>
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );

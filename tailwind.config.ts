@@ -1,13 +1,20 @@
 import type { Config } from "tailwindcss";
 
-const config: Config = {
-  darkMode: "class",
+const config = {
+  darkMode: ["class"],
   content: [
     "./node_modules/flowbite-react/lib/**/*.js",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    "./public/**/*.html",
   ],
   theme: {
+    // container class by shadcnui
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
         app: {
@@ -21,8 +28,28 @@ const config: Config = {
         rubik: ["Rubik", "var(--font-rubik)"],
         sans: ["Inter", "var(--font-default)"],
       },
+      // keyframes variants by shadcnui
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      // animation variants by shadcnui
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("flowbite/plugin")],
-};
-export default config;
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("flowbite/plugin"), // used by flowbite-react
+    require("tailwindcss-animate")], // used by shadcnui
+} satisfies Config
+
+export default config
