@@ -65,7 +65,9 @@ function Card({ post }: { post: Post }) {
               .map((tag) => (
                 <Link
                   key={tag}
-                  className={badgeVariants()}
+                  className={badgeVariants({
+                    className: "ltr:mr-0.5 rtl:ml-0.5",
+                  })}
                   href={`?tag=${tag}`}
                 >
                   #{tag}
