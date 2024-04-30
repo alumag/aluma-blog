@@ -28,7 +28,6 @@ export default async function Craft({
 }: {
   searchParams: { tag?: string };
 }) {
-  console.log("tag", tag);
   const posts = (await getPosts(client, "craft")).filter((post) =>
     tag !== undefined ? post.tags && post.tags.includes(tag) : true,
   );
