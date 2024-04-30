@@ -9,7 +9,7 @@ import { Gallery } from "@/lib/sanity.queries";
 import { Carousel } from "flowbite-react";
 import { SanityImage } from "@/components/SanityImage";
 import { Metadata } from "next";
-import { Badge, badgeVariants } from "@/components/ui/badge";
+import { badgeVariants } from "@/components/ui/badge";
 
 const client = getClient();
 
@@ -32,32 +32,33 @@ export default async function Craft({
     tag !== undefined ? post.tags && post.tags.includes(tag) : true,
   );
 
-  return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-      {posts.map((post) => (
-        <Fragment key={post._id}>
-          <Card post={post} />
-        </Fragment>
-      ))}
-    </div>
-  );
+  return posts.map((post) => (
+    <Fragment key={post._id}>
+      <Card post={post} />
+    </Fragment>
+  ));
 }
 
 function Card({ post }: { post: Post }) {
   return (
-    <div className="max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
+    <div className="mb-2 flex w-11/12 flex-col rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800 sm:flex-row">
       {post.gallery && <ImageGallery gallery={post.gallery} />}
-      <div className="flex flex-col px-5 pb-2">
+      <div className="flex flex-col px-5 pb-2 sm:w-5/6">
         <Article
-          className={`${post.gallery ? "line-clamp-6" : ""} prose-p:text-sm`}
+          className={`${
+            post.gallery ? "line-clamp-6" : ""
+          } prose-headings:mt-3 prose-headings:text-lg prose-p:text-sm`}
         >
-          <p className="text-right text-xs rtl:text-left">
-            <Link href={`/craft/${post.slug.current}`}>
-              <LocalTime date={post.publishedAt} />
-            </Link>
-          </p>
+          <Link href={`/craft/${post.slug.current}`}>
+            <h2>{post.title}</h2>
+          </Link>
           <PortableText value={post.body} />
         </Article>
+        <p className="text-right text-xs rtl:text-left">
+          <Link href={`/craft/${post.slug.current}`}>
+            <LocalTime date={post.publishedAt} />
+          </Link>
+        </p>
         {post.tags && (
           <div>
             {post.tags
@@ -84,8 +85,12 @@ function ImageGallery({ gallery }: { gallery: Gallery }) {
   return (
     <Carousel
       slide={false}
-      theme={{ scrollContainer: { base: "flex h-full rounded-t-lg" } }}
-      className="h-56 pb-1 sm:h-64 xl:h-80 2xl:h-96"
+      theme={{
+        scrollContainer: {
+          base: "flex h-full rounded-t-lg sm:ltr:rounded-r-none sm:ltr:rounded-l-lg sm:rtl:rounded-l-none sm:rtl:rounded-r-lg",
+        },
+      }}
+      className="h-56 max-w-lg sm:h-64 xl:h-80 2xl:h-96"
     >
       {gallery.images.map((image) => (
         <SanityImage key={(image._key as string) ?? image.alt} image={image} />
