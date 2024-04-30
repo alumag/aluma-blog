@@ -83,6 +83,7 @@ function Card({ post }: { post: Post }) {
 function ImageGallery({ gallery }: { gallery: Gallery }) {
   return (
     <Carousel
+      slide={false}
       theme={{ scrollContainer: { base: "flex h-full rounded-t-lg" } }}
       className="h-56 pb-1 sm:h-64 xl:h-80 2xl:h-96"
     >
