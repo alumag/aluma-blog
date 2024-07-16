@@ -17,7 +17,9 @@ export async function getPostsSitemap(
   client: SanityClient,
   tag: string,
   language?: Language,
-): Promise<{ _id: string, slug: Slug, publishedAt: string, _updatedAt: string }[]> {
+): Promise<
+  { _id: string; slug: Slug; publishedAt: string; _updatedAt: string }[]
+> {
   const locale = language ?? getLocaleCookie();
   return await client.fetch(postsSitemapQuery, { language: locale, tag });
 }
