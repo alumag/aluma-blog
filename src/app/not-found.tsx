@@ -27,7 +27,7 @@ export default function NotFound() {
       <p className="text-6xl font-bold tracking-wider text-gray-300 md:text-7xl lg:text-9xl">
         404
       </p>
-      <p className="text-md mt-4 font-bold text-gray-500 rtl:font-alef md:text-3xl lg:text-5xl">
+      <p className="text-md mt-4 font-bold text-gray-500 md:text-3xl lg:text-5xl rtl:font-alef">
         {content.title}
       </p>
       <p className="mt-4 border-b-2 pb-4 text-center text-gray-500 rtl:font-rubik">

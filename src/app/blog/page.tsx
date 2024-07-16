@@ -50,7 +50,7 @@ export default function Blog() {
           />
         </g>
       </svg>
-      <p className="mt-4 text-3xl font-bold text-gray-500 rtl:font-alef md:text-4xl lg:text-5xl">
+      <p className="mt-4 text-3xl font-bold text-gray-500 md:text-4xl lg:text-5xl rtl:font-alef">
         {content.soon}
       </p>
       <p className="mt-4 border-b-2 pb-4 text-center text-gray-500 rtl:font-rubik">
