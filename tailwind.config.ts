@@ -49,7 +49,8 @@ const config = {
   plugins: [
     require("@tailwindcss/typography"),
     require("flowbite/plugin"), // used by flowbite-react
-    require("tailwindcss-animate")], // used by shadcnui
-} satisfies Config
+    require("tailwindcss-animate"),
+  ], // used by shadcnui
+} satisfies Config;
 
-export default config
+export default config;
