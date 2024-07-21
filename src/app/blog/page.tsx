@@ -1,4 +1,4 @@
-import { getLocaleCookie } from "@/core/getLocaleCookie";
+import { getLocale } from "@/core/getLocale";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -18,7 +18,7 @@ const enContent = {
 };
 
 export function generateMetadata(): Metadata {
-  const locale = getLocaleCookie();
+  const locale = getLocale();
   const content = locale === "he" ? heContent : enContent;
 
   return {
@@ -27,7 +27,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default function Blog() {
-  const locale = getLocaleCookie();
+  const locale = getLocale();
   const content = locale === "he" ? heContent : enContent;
 
   return (

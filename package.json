@@ -16,7 +16,6 @@
     "*.{ts,js,tsx,jsx,css,md}": "prettier --write"
   },
   "dependencies": {
-    "@formatjs/intl-localematcher": "^0.5.2",
     "@github/relative-time-element": "^4.4.2",
     "@next/third-parties": "^14.0.4",
     "@vercel/speed-insights": "^1.0.10",
@@ -25,7 +24,6 @@
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.10.1",
     "lucide-react": "^0.376.0",
-    "negotiator": "^0.6.3",
     "next": "^14.2.5",
     "next-sanity": "^7.0.4",
     "next-sanity-image": "^6.1.1",
