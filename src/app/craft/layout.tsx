@@ -1,7 +1,7 @@
 "use server";
 
 import NextBreadcrumb from "@/components/NextBreadcrumb";
-import { getLocaleCookie } from "@/core/getLocaleCookie";
+import { getLocale } from "@/core/getLocale";
 import { getClient } from "@/lib/sanity.client";
 import { getSiteMetadata } from "@/lib/sanity.site-metadata";
 import type { Metadata } from "next";
@@ -10,7 +10,7 @@ const client = getClient();
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getSiteMetadata(client);
-  const locale = getLocaleCookie();
+  const locale = getLocale();
 
   return {
     title: locale === "he" ? "יצירה" : "craft",

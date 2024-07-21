@@ -2,7 +2,7 @@ import type { PortableTextBlock } from "@portabletext/types";
 import type { Slug, Image } from "@sanity/types";
 import groq from "groq";
 import { type SanityClient, type SanityDocument } from "next-sanity";
-import { getLocaleCookie } from "@/core/getLocaleCookie";
+import { getLocale } from "@/core/getLocale";
 import { Language } from "./sanity.core";
 
 export const postsSitemapQuery = groq`
@@ -20,7 +20,7 @@ export async function getPostsSitemap(
 ): Promise<
   { _id: string; slug: Slug; publishedAt: string; _updatedAt: string }[]
 > {
-  const locale = language ?? getLocaleCookie();
+  const locale = language ?? getLocale();
   return await client.fetch(postsSitemapQuery, { language: locale, tag });
 }
 
@@ -50,7 +50,7 @@ export async function getPosts(
   tag: string,
   language?: Language,
 ): Promise<Post[]> {
-  const locale = language ?? getLocaleCookie();
+  const locale = language ?? getLocale();
   return await client.fetch(postsQuery, { language: locale, tag });
 }
 
@@ -80,7 +80,7 @@ export async function getPost(
   slug: string,
   language?: Language,
 ): Promise<Post> {
-  const locale = language ?? getLocaleCookie();
+  const locale = language ?? getLocale();
   return await client.fetch(postBySlugQuery, {
     slug,
     language: locale,

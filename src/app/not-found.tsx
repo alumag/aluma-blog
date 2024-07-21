@@ -1,4 +1,4 @@
-import { getLocaleCookie } from "@/core/getLocaleCookie";
+import { getLocale } from "@/core/getLocale";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ const enContent = {
 };
 
 export default function NotFound() {
-  const locale = getLocaleCookie();
+  const locale = getLocale();
   const content = locale === "he" ? heContent : enContent;
 
   return (

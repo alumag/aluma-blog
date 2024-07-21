@@ -1,6 +1,6 @@
 import groq from "groq";
 import { type SanityDocument, type SanityClient } from "next-sanity";
-import { getLocaleCookie } from "@/core/getLocaleCookie";
+import { getLocale } from "@/core/getLocale";
 import { Language } from "./sanity.core";
 
 export const siteMetadataQuery = groq`
@@ -17,7 +17,7 @@ export async function getSiteMetadata(
   client: SanityClient,
   language?: Language,
 ): Promise<SiteMetadata> {
-  const locale = language ?? getLocaleCookie();
+  const locale = language ?? getLocale();
   return await client.fetch(siteMetadataQuery, { language: locale });
 }
 
