@@ -18,7 +18,7 @@
   "dependencies": {
     "@github/relative-time-element": "^4.4.2",
     "@next/third-parties": "^14.0.4",
-    "@vercel/speed-insights": "^1.0.10",
+    "@vercel/speed-insights": "^1.0.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "flowbite": "^2.2.1",
@@ -32,7 +32,7 @@
     "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13",
+    "@tailwindcss/typography": "^0.5.14",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -42,11 +42,11 @@
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^8.0.0",
-    "lint-staged": "^15.2.7",
+    "lint-staged": "^15.2.8",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.5.9",
-    "tailwindcss": "^3.4.5",
+    "tailwindcss": "^3.4.9",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"
   }
