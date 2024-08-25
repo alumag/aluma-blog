@@ -12,3 +12,7 @@ updates:
       interval: "monthly"
     reviewers:
       - alumag
+    groups:
+      patches:
+        update-types:
+          - patch
