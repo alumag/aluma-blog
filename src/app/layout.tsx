@@ -47,7 +47,7 @@ export default async function RootLayout({
       dir={data.dir}
       className={`antialiased ${defaultFont.variable} ${rubikFont.variable} ${alefFont.variable}`}
     >
-      <body className="min-h-screen w-screen bg-white dark:bg-black">
+      <body className="min-w-screen min-h-screen bg-white dark:bg-black">
         <main className="container px-8 py-6 md:px-24">{children}</main>
         <footer className="fixed bottom-0 w-full">
           <div className="h-12 w-full bg-gradient-to-t from-app-purple/60 to-transparent dark:from-app-purple/20" />
