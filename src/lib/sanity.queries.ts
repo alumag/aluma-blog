@@ -37,8 +37,9 @@ export const postsQuery = groq`
     "gallery": gallery->{
       "images": images[]{
         ...,
-        "alt": alt[$language],
-        "url": asset->url,
+        alt._type == "localeString" => {
+          "alt": alt[$language],
+        },
         asset->{
           ...,
           metadata
@@ -71,8 +72,9 @@ export const postBySlugQuery = groq`
   "gallery": gallery->{
     "images": images[]{
       ...,
-      "alt": alt[$language],
-      "url": asset->url,
+      alt._type == "localeString" => {
+        "alt": alt[$language],
+      },
       asset->{
         ...,
         metadata
