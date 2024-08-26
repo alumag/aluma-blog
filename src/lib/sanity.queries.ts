@@ -4,6 +4,7 @@ import groq from "groq";
 import { type SanityClient, type SanityDocument } from "next-sanity";
 import { getLocale } from "@/core/getLocale";
 import { Language } from "./sanity.core";
+import { ImageType } from "./schema/Image.type";
 
 export const postsSitemapQuery = groq`
 *[_type == "post" && language == $language && defined(slug.current) && $tag in tags[]._key] | order(_updatedAt desc)[]{
@@ -38,6 +39,10 @@ export const postsQuery = groq`
         ...,
         "alt": alt[$language],
         "url": asset->url,
+        asset->{
+          ...,
+          metadata
+        }
       },
       display,
       zoom,
@@ -68,6 +73,10 @@ export const postBySlugQuery = groq`
       ...,
       "alt": alt[$language],
       "url": asset->url,
+      asset->{
+        ...,
+        metadata
+      }
     },
     display,
     zoom,
@@ -92,7 +101,7 @@ export const postSlugsQuery = groq`
 `;
 
 export interface Gallery {
-  images: (Image & { alt: string; url: string })[];
+  images: ImageType[];
   display: "stacked" | "inline" | "carousel" | null;
   zoom: boolean | null;
 }
