@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/types";
-import type { Slug, Image } from "@sanity/types";
+import type { Slug } from "@sanity/types";
 import groq from "groq";
 import { type SanityClient, type SanityDocument } from "next-sanity";
 import { getLocale } from "@/core/getLocale";
