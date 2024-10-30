@@ -25,8 +25,11 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
+      - name: Type Check
+        run: turbo type-check
+
       - name: 🧹 Lint
-        run: npm run lint
+        run: turbo lint
 
       - name: 💄 Formatting
-        run: npm run format
+        run: turbo format

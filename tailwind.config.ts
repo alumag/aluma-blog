@@ -1,4 +1,7 @@
 import type { Config } from "tailwindcss";
+import typographyPlugin from "@tailwindcss/typography";
+import flowbitePlugin from "flowbite/plugin";
+import tailwindcssAnimatePlugin from "tailwindcss-animate";
 
 const config = {
   darkMode: ["class"],
@@ -47,9 +50,9 @@ const config = {
     },
   },
   plugins: [
-    require("@tailwindcss/typography"),
-    require("flowbite/plugin"), // used by flowbite-react
-    require("tailwindcss-animate"),
+    typographyPlugin,
+    flowbitePlugin, // used by flowbite-react
+    tailwindcssAnimatePlugin,
   ], // used by shadcnui
 } satisfies Config;
 
