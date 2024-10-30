@@ -1,11 +1,9 @@
-import type { PortableTextBlock } from "@portabletext/types";
-import type { Slug } from "@sanity/types";
 import groq from "groq";
-import { type SanityDocument } from "next-sanity";
 import { getLocale } from "@/core/getLocale";
 import { Language } from "./sanity.core";
 import { ImageType } from "./schema/Image.type";
 import { client } from "@/sanity/lib/client";
+import { Post as SchemaPost } from "@/sanity/types.generated";
 
 export const postsQuery = groq`
   *[_type == "post" && language == $language && defined(slug.current) && $filterByTag in tags[]._key] | order(publishedAt desc)[]{
@@ -84,13 +82,7 @@ export interface Gallery {
   zoom: boolean | null;
 }
 
-export type Post = SanityDocument<{
-  _type: "post";
-  title: string;
-  slug: Slug;
-  publishedAt: string;
-  body: PortableTextBlock[];
-  language: Language;
+export type Post = Omit<SchemaPost, "tags" | "gallery"> & {
   gallery: Gallery | null;
-  tags: string[] | null;
-}>;
+  tags: string[];
+};

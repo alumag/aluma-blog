@@ -11,6 +11,7 @@ export default defineType({
       name: "title",
       title: "Title",
       type: "string",
+      validation: (rule) => rule.required(),
     },
     defineField({
       ...slug,
@@ -20,6 +21,7 @@ export default defineType({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
+      validation: (rule) => rule.required(),
     },
     {
       name: "body",
@@ -30,6 +32,8 @@ export default defineType({
           type: "block",
         },
       ],
+      initialValue: [],
+      validation: (rule) => rule.required(),
     },
     {
       name: "gallery",
@@ -44,6 +48,8 @@ export default defineType({
       options: {
         allowCreate: true,
       },
+      initialValue: [],
+      validation: (rule) => rule.required(),
     },
     language,
   ],
