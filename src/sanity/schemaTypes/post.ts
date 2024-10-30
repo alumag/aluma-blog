@@ -51,7 +51,10 @@ export default defineType({
       initialValue: [],
       validation: (rule) => rule.required(),
     },
-    language,
+    defineField({
+      ...language,
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {
