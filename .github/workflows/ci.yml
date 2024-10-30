@@ -26,10 +26,10 @@ jobs:
         run: npm ci
 
       - name: Type Check
-        run: turbo type-check
+        run: npx turbo type-check
 
       - name: 🧹 Lint
-        run: turbo lint
+        run: npx turbo lint
 
       - name: 💄 Formatting
-        run: turbo format
+        run: npx turbo format
