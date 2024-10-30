@@ -7,6 +7,12 @@ on:
     branches:
       - main
 
+  secrets:
+    NEXT_PUBLIC_SANITY_DATASET:
+      required: true
+    NEXT_PUBLIC_SANITY_PROJECT_ID:
+      required: true
+
 jobs:
   ci:
     name: Run action
