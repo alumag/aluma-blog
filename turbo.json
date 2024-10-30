@@ -3,7 +3,11 @@
   "globalDependencies": [".env", ".env.local"],
   "tasks": {
     "typegen": {
-      "inputs": ["src/sanity/**", "!src/sanity/*.generated.ts", "!src/sanity/*.generated.json"],
+      "inputs": [
+        "src/sanity/**",
+        "!src/sanity/*.generated.ts",
+        "!src/sanity/*.generated.json"
+      ],
       "env": ["NEXT_PUBLIC_SANITY_PROJECT_ID", "NEXT_PUBLIC_SANITY_DATASET"],
       "outputs": [
         "src/sanity/types.generated.ts",
