@@ -15,4 +15,5 @@ export const language = defineField({
   initialValue: "he",
   readOnly: true,
   hidden: false,
+  validation: (rule) => rule.required(),
 });

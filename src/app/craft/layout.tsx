@@ -2,12 +2,17 @@
 
 import NextBreadcrumb from "@/components/NextBreadcrumb";
 import { getLocale } from "@/core/getLocale";
-import { getSiteMetadata } from "@/lib/sanity.site-metadata";
+import { client } from "@/sanity/lib/client";
+import { getSiteMetadataQuery } from "@/sanity/lib/queries";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await getSiteMetadata();
   const locale = getLocale();
+  const data = await client.fetch(getSiteMetadataQuery, { language: locale });
+  if (data === null) {
+    notFound();
+  }
 
   return {
     title: locale === "he" ? "יצירה" : "craft",
