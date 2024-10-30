@@ -1,6 +1,7 @@
+import { defineType } from "sanity";
 import { baseLanguage } from "./localeStringType";
 
-export default {
+export default defineType({
   name: "gallery",
   title: "Gallery",
   type: "document",
@@ -43,7 +44,7 @@ export default {
     select: {
       images: "images",
     },
-    prepare(selection: any) {
+    prepare(selection) {
       const { images } = selection;
       const length = images ? Object.keys(images).length : 0;
 
@@ -57,4 +58,4 @@ export default {
       };
     },
   },
-};
+});
