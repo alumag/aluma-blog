@@ -7,27 +7,6 @@ import { Language } from "./sanity.core";
 import { ImageType } from "./schema/Image.type";
 import { client } from "@/sanity/lib/client";
 
-export const postsSitemapQuery = groq`
-*[_type == "post" && language == $language && defined(slug.current) && $filterByTag in tags[]._key] | order(_updatedAt desc)[]{
-  _id,
-  slug,
-  publishedAt,
-  _updatedAt
-}`;
-
-export async function getPostsSitemap(
-  tag: string,
-  language?: Language,
-): Promise<
-  { _id: string; slug: Slug; publishedAt: string; _updatedAt: string }[]
-> {
-  const locale = language ?? getLocale();
-  return await client.fetch(postsSitemapQuery, {
-    language: locale,
-    filterByTag: tag,
-  });
-}
-
 export const postsQuery = groq`
   *[_type == "post" && language == $language && defined(slug.current) && $filterByTag in tags[]._key] | order(publishedAt desc)[]{
     _id,

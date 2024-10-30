@@ -13,3 +13,12 @@ export const getSiteMetadataQuery = defineQuery(`
     locale,
     language,
 }`);
+
+export const getCraftPostsLastModifiedQuery = defineQuery(`
+  *[_type == "post" && language == $language && defined(slug.current) && "craft" in tags[].value] | order(_updatedAt desc)[0]._updatedAt`);
+
+export const getCraftSitemapQuery = defineQuery(`
+*[_type == "post" && language == $language && defined(slug.current) && "craft" in tags[].value] | order(_updatedAt desc)[]{
+  'url': "/craft/" + slug.current,
+  'lastModified': _updatedAt,
+}`);
