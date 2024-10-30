@@ -40,4 +40,4 @@ next-env.d.ts
 .turbo
 
 # Sanity
-src/sanity/*.generated.*
+src/sanity/*.generated.json
