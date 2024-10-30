@@ -2,8 +2,15 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": [".env", ".env.local"],
   "tasks": {
+    "typegen": {
+      "inputs": ["src/sanity/**", "!src/sanity/*.generated.ts"],
+      "outputs": [
+        "src/sanity/types.generated.ts",
+        "src/sanity/schema.generated.json"
+      ]
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["typegen", "^build"],
       "env": [
         "NEXT_PUBLIC_SANITY_PROJECT_ID",
         "NEXT_PUBLIC_SANITY_DATASET",
@@ -15,7 +22,9 @@
     },
     "format": {},
     "lint": {},
-    "type-check": {},
+    "type-check": {
+      "dependsOn": ["typegen"]
+    },
     "dev": {
       "persistent": true,
       "cache": false

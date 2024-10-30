@@ -38,3 +38,6 @@ next-env.d.ts
 
 # Turbo
 .turbo
+
+# Sanity
+src/sanity/*.generated.*
