@@ -11,7 +11,7 @@
     "prepare": "husky",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "typegen": "sanity schema extract --path=src/sanity/schema.generated.json && sanity typegen generate"
+    "typegen": "sanity schema extract --enforce-required-fields --path=src/sanity/schema.generated.json && sanity typegen generate"
   },
   "lint-staged": {
     "*.{ts,js,tsx,jsx}": "eslint --cache --fix",
