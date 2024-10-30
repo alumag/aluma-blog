@@ -7,7 +7,7 @@ import { Language } from "./sanity.core";
 import { ImageType } from "./schema/Image.type";
 
 export const postsSitemapQuery = groq`
-*[_type == "post" && language == $language && defined(slug.current) && $tag in tags[]._key] | order(_updatedAt desc)[]{
+*[_type == "post" && language == $language && defined(slug.current) && $filterByTag in tags[]._key] | order(_updatedAt desc)[]{
   _id,
   slug,
   publishedAt,
@@ -22,11 +22,11 @@ export async function getPostsSitemap(
   { _id: string; slug: Slug; publishedAt: string; _updatedAt: string }[]
 > {
   const locale = language ?? getLocale();
-  return await client.fetch(postsSitemapQuery, { language: locale, tag });
+  return await client.fetch(postsSitemapQuery, { language: locale, filterByTag: tag });
 }
 
 export const postsQuery = groq`
-  *[_type == "post" && language == $language && defined(slug.current) && $tag in tags[]._key] | order(publishedAt desc)[]{
+  *[_type == "post" && language == $language && defined(slug.current) && $filterByTag in tags[]._key] | order(publishedAt desc)[]{
     _id,
     title,
     slug,
@@ -57,7 +57,7 @@ export async function getPosts(
   language?: Language,
 ): Promise<Post[]> {
   const locale = language ?? getLocale();
-  return await client.fetch(postsQuery, { language: locale, tag });
+  return await client.fetch(postsQuery, { language: locale, filterByTag: tag });
 }
 
 export const postBySlugQuery = groq`
