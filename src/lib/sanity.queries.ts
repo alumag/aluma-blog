@@ -78,10 +78,6 @@ export async function getPost(
   });
 }
 
-export const postSlugsQuery = groq`
-*[_type == "post" && language == $language && defined(slug.current)][].slug.current
-`;
-
 export interface Gallery {
   images: ImageType[];
   display: "stacked" | "inline" | "carousel" | null;
