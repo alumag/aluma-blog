@@ -7,10 +7,6 @@ on:
     branches:
       - main
 
-env:
-  NEXT_PUBLIC_SANITY_DATASET: development
-  NEXT_PUBLIC_SANITY_PROJECT_ID: xxxxxx
-
 jobs:
   ci:
     name: Run action
@@ -30,10 +26,10 @@ jobs:
         run: npm ci
 
       - name: Type Check
-        run: npx turbo type-check
+        run: npm run type-check
 
       - name: 🧹 Lint
-        run: npx turbo lint
+        run: npm run lint
 
       - name: 💄 Formatting
-        run: npx turbo format
+        run: npm run format
