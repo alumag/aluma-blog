@@ -4,20 +4,17 @@ import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { Carousel } from "flowbite-react";
 import { PortableText } from "@portabletext/react";
-import { getClient } from "@/lib/sanity.client";
 import { Gallery, getPost } from "@/lib/sanity.queries";
 import { Article } from "@/components/Article";
 import { SanityImage } from "@/components/SanityImage";
 import { LocalTime } from "@/components/LocalTime";
-
-const client = getClient();
 
 type Params = {
   slug: string;
 };
 
 export default async function Page({ params: { slug } }: { params: Params }) {
-  const data = await getPost(client, slug);
+  const data = await getPost(slug);
 
   if (data === null) {
     notFound();

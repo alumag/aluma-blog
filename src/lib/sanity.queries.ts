@@ -1,10 +1,11 @@
 import type { PortableTextBlock } from "@portabletext/types";
 import type { Slug } from "@sanity/types";
 import groq from "groq";
-import { type SanityClient, type SanityDocument } from "next-sanity";
+import { type SanityDocument } from "next-sanity";
 import { getLocale } from "@/core/getLocale";
 import { Language } from "./sanity.core";
 import { ImageType } from "./schema/Image.type";
+import { client } from "@/sanity/lib/client";
 
 export const postsSitemapQuery = groq`
 *[_type == "post" && language == $language && defined(slug.current) && $filterByTag in tags[]._key] | order(_updatedAt desc)[]{
@@ -15,14 +16,16 @@ export const postsSitemapQuery = groq`
 }`;
 
 export async function getPostsSitemap(
-  client: SanityClient,
   tag: string,
   language?: Language,
 ): Promise<
   { _id: string; slug: Slug; publishedAt: string; _updatedAt: string }[]
 > {
   const locale = language ?? getLocale();
-  return await client.fetch(postsSitemapQuery, { language: locale, filterByTag: tag });
+  return await client.fetch(postsSitemapQuery, {
+    language: locale,
+    filterByTag: tag,
+  });
 }
 
 export const postsQuery = groq`
@@ -52,7 +55,6 @@ export const postsQuery = groq`
   }`;
 
 export async function getPosts(
-  client: SanityClient,
   tag: string,
   language?: Language,
 ): Promise<Post[]> {
@@ -87,7 +89,6 @@ export const postBySlugQuery = groq`
 }`;
 
 export async function getPost(
-  client: SanityClient,
   slug: string,
   language?: Language,
 ): Promise<Post> {

@@ -3,14 +3,11 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { alefFont, defaultFont, rubikFont } from "@/fonts";
 import { getSiteMetadata } from "@/lib/sanity.site-metadata";
-import { getClient } from "@/lib/sanity.client";
 import { gtmId } from "@/lib/gtm";
 import "./globals.css";
 
-const client = getClient();
-
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await getSiteMetadata(client);
+  const data = await getSiteMetadata();
 
   return {
     metadataBase:
@@ -39,7 +36,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const data = await getSiteMetadata(client);
+  const data = await getSiteMetadata();
 
   return (
     <html

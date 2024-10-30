@@ -1,11 +1,8 @@
 import { PortableText } from "@portabletext/react";
 import { getPost } from "@/lib/sanity.queries";
-import { getClient } from "@/lib/sanity.client";
 import { Article } from "@/components/Article";
 import { SocialMedia } from "@/components/SocialMedia";
 import { Metadata } from "next";
-
-const client = getClient();
 
 export const metadata: Metadata = {
   alternates: {
@@ -18,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const data = await getPost(client, "aluma-gelbard");
+  const data = await getPost("aluma-gelbard");
 
   return (
     <>

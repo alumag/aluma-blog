@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 import { Article } from "@/components/Article";
-import { getClient } from "@/lib/sanity.client";
 import { Post, getPosts } from "@/lib/sanity.queries";
 import { Fragment } from "react";
 import { LocalTime } from "@/components/LocalTime";
@@ -10,8 +9,6 @@ import { Carousel } from "flowbite-react";
 import { SanityImage } from "@/components/SanityImage";
 import { Metadata } from "next";
 import { badgeVariants } from "@/components/ui/badge";
-
-const client = getClient();
 
 export const metadata: Metadata = {
   alternates: {
@@ -28,7 +25,7 @@ export default async function Craft({
 }: {
   searchParams: { tag?: string };
 }) {
-  const posts = (await getPosts(client, "craft")).filter((post) =>
+  const posts = (await getPosts("craft")).filter((post) =>
     tag !== undefined ? post.tags && post.tags.includes(tag) : true,
   );
 
