@@ -1,0 +1,47 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env", ".env.local"],
+  "tasks": {
+    "typegen": {
+      "inputs": [
+        "src/sanity/**",
+        "!src/sanity/*.generated.ts",
+        "!src/sanity/*.generated.json"
+      ],
+      "env": ["NEXT_PUBLIC_SANITY_PROJECT_ID", "NEXT_PUBLIC_SANITY_DATASET"],
+      "outputs": [
+        "src/sanity/types.generated.ts",
+        "src/sanity/schema.generated.json"
+      ]
+    },
+    "build": {
+      "dependsOn": ["typegen", "^build"],
+      "env": [
+        "NEXT_PUBLIC_SANITY_PROJECT_ID",
+        "NEXT_PUBLIC_SANITY_DATASET",
+        "SANITY_API_READ_TOKEN",
+        "NEXT_PUBLIC_SANITY_API_VERSION",
+        "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "format": {
+      "dependsOn": ["typegen"]
+    },
+    "lint": {
+      "dependsOn": ["typegen"]
+    },
+    "type-check": {
+      "dependsOn": ["typegen"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

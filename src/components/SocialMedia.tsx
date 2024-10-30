@@ -1,12 +1,10 @@
 "use server";
 
-import { getClient } from "@/lib/sanity.client";
-import { getSocialMediaLinks } from "@/lib/sanity.social-media-links";
-
-const client = getClient();
+import { client } from "@/sanity/lib/client";
+import { getSocialMediaLinksQuery } from "@/sanity/lib/queries";
 
 export async function SocialMedia({ className }: { className?: string }) {
-  const data = await getSocialMediaLinks(client);
+  const data = await client.fetch(getSocialMediaLinksQuery);
 
   return (
     <div className={`flex justify-center sm:justify-end ${className ?? ""}`}>

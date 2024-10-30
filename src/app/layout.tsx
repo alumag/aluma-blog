@@ -2,15 +2,20 @@ import { type Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { alefFont, defaultFont, rubikFont } from "@/fonts";
-import { getSiteMetadata } from "@/lib/sanity.site-metadata";
-import { getClient } from "@/lib/sanity.client";
 import { gtmId } from "@/lib/gtm";
 import "./globals.css";
-
-const client = getClient();
+import { client } from "@/sanity/lib/client";
+import { getSiteMetadataQuery } from "@/sanity/lib/queries";
+import { notFound } from "next/navigation";
+import { getLocale } from "@/core/getLocale";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await getSiteMetadata(client);
+  const data = await client.fetch(getSiteMetadataQuery, {
+    language: getLocale(),
+  });
+  if (data === null) {
+    notFound();
+  }
 
   return {
     metadataBase:
@@ -39,7 +44,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const data = await getSiteMetadata(client);
+  const data = await client.fetch(getSiteMetadataQuery, {
+    language: getLocale(),
+  });
+  if (data === null) {
+    notFound();
+  }
 
   return (
     <html

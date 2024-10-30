@@ -2,10 +2,8 @@
 
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
-import { getClient } from "@/lib/sanity.client";
 import { ImageType } from "@/lib/schema/Image.type";
-
-const client = getClient();
+import { client } from "@/sanity/lib/client";
 
 export function SanityImage({
   image,
