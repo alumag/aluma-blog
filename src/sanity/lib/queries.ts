@@ -19,6 +19,6 @@ export const getCraftPostsLastModifiedQuery = defineQuery(`
 
 export const getCraftSitemapQuery = defineQuery(`
 *[_type == "post" && language == $language && defined(slug.current) && "craft" in tags[].value] | order(_updatedAt desc)[]{
-  'url': "/craft/" + slug.current,
+  'url': "craft/" + slug.current,
   'lastModified': _updatedAt,
 }`);
