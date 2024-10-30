@@ -20,8 +20,12 @@
       ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
-    "format": {},
-    "lint": {},
+    "format": {
+      "dependsOn": ["typegen"]
+    },
+    "lint": {
+      "dependsOn": ["typegen"]
+    },
     "type-check": {
       "dependsOn": ["typegen"]
     },
