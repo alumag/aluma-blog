@@ -1,7 +1,8 @@
+import { defineType, defineField } from "sanity";
 import { language } from "./language";
 import { slug } from "./slug";
 
-export default {
+export default defineType({
   title: "Post",
   name: "post",
   type: "document",
@@ -11,7 +12,10 @@ export default {
       title: "Title",
       type: "string",
     },
-    slug,
+    defineField({
+      ...slug,
+      validation: (rule) => rule.required(),
+    }),
     {
       name: "publishedAt",
       title: "Published at",
@@ -49,7 +53,7 @@ export default {
       language: "language",
       slug: "slug",
     },
-    prepare(selection: any) {
+    prepare(selection) {
       const { title, language, slug } = selection;
       return {
         title: `${title} (${language})`,
@@ -57,4 +61,4 @@ export default {
       };
     },
   },
-};
+});
