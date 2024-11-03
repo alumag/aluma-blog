@@ -41,7 +41,7 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <main className="container px-8 py-6 md:px-24">
       <NextBreadcrumb
         homeElement={<span>❤️</span>}
         separator={<span aria-hidden="true"> / </span>}
@@ -50,6 +50,6 @@ export default async function Layout({
         listClasses="hover:underline mx-2 font-bold"
       />
       {children}
-    </>
+    </main>
   );
 }
