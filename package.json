@@ -5,8 +5,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "lint": "next lint",
     "prepare": "husky",
     "start": "next start",
@@ -20,6 +20,8 @@
   "dependencies": {
     "@github/relative-time-element": "^4.4.3",
     "@next/third-parties": "^15.0.2",
+    "@portabletext/react": "^3.1.0",
+    "@sanity/client": "^6.22.4",
     "@sanity/document-internationalization": "^3.1.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.62.3",
@@ -40,6 +42,7 @@
     "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
+    "@sanity/types": "^3.63.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
@@ -60,5 +63,5 @@
     "turbo": "^2.2.3",
     "typescript": "^5"
   },
-  "packageManager": "npm@10.8.2"
+  "packageManager": "pnpm@9.12.3"
 }
