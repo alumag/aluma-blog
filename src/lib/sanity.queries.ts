@@ -1,11 +1,11 @@
-import groq from "groq";
+import { defineQuery } from "next-sanity";
 import { getLocale } from "@/core/getLocale";
 import { Language } from "./sanity.core";
 import { ImageType } from "./schema/Image.type";
 import { client } from "@/sanity/lib/client";
 import { Post as SchemaPost } from "@/sanity/types.generated";
 
-export const postsQuery = groq`
+export const postsQuery = defineQuery(`
   *[_type == "post" && language == $language && defined(slug.current) && $filterByTag in tags[]._key] | order(publishedAt desc)[]{
     _id,
     title,
@@ -29,7 +29,7 @@ export const postsQuery = groq`
       zoom,
     },
     "tags": tags[].value
-  }`;
+  }`);
 
 export async function getPosts(
   tag: string,
@@ -39,7 +39,7 @@ export async function getPosts(
   return await client.fetch(postsQuery, { language: locale, filterByTag: tag });
 }
 
-export const postBySlugQuery = groq`
+export const postBySlugQuery = defineQuery(`
 *[_type == "post" && language == $language && slug.current == $slug][0]{
   _id,
   title,
@@ -63,7 +63,7 @@ export const postBySlugQuery = groq`
     zoom,
   },
   "tags": tags[].value
-}`;
+}`);
 
 export async function getPost(
   slug: string,
