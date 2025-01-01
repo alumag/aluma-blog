@@ -18,7 +18,7 @@
     "*.{ts,js,tsx,jsx,css,md}": "prettier --write"
   },
   "dependencies": {
-    "@github/relative-time-element": "^4.4.3",
+    "@github/relative-time-element": "^4.4.4",
     "@next/third-parties": "^15.0.2",
     "@portabletext/react": "^3.1.0",
     "@sanity/client": "^6.22.5",
@@ -32,12 +32,12 @@
     "flowbite-react": "^0.7.2",
     "lucide-react": "^0.454.0",
     "next": "^14.2.14",
-    "next-sanity": "^9.8.19",
+    "next-sanity": "^9.8.30",
     "next-sanity-image": "^6.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sanity": "^3.62.3",
-    "sanity-plugin-tags": "^2.0.2",
+    "sanity-plugin-tags": "^2.1.1",
     "styled-components": "^6.1.13",
     "tailwind-merge": "^2.5.5"
   },
@@ -58,7 +58,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-packagejson": "^2.5.6",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "tailwindcss": "^3.4.15",
+    "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
     "turbo": "^2.2.3",
     "typescript": "^5"
