@@ -18,7 +18,7 @@
     "*.{ts,js,tsx,jsx,css,md}": "prettier --write"
   },
   "dependencies": {
-    "@github/relative-time-element": "^4.4.5",
+    "@github/relative-time-element": "^4.4.8",
     "@next/third-parties": "^15.0.2",
     "@portabletext/react": "^3.1.0",
     "@sanity/client": "^6.22.5",
@@ -38,7 +38,7 @@
     "react-dom": "^18.3.1",
     "sanity": "^3.87.0",
     "sanity-plugin-tags": "^2.1.1",
-    "styled-components": "^6.1.16",
+    "styled-components": "^6.1.18",
     "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
@@ -56,7 +56,7 @@
     "lint-staged": "^15.2.10",
     "postcss": "^8",
     "prettier": "^3.3.3",
-    "prettier-plugin-packagejson": "^2.5.10",
+    "prettier-plugin-packagejson": "^2.5.13",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.15",
     "tailwindcss-animate": "^1.0.7",
