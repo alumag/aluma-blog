@@ -34,7 +34,7 @@ export default function Blog() {
     <main className="container px-8 py-6 md:px-24">
       <div className="flex flex-col items-center justify-center px-4 py-8 md:px-8 lg:px-24">
         <svg
-          className="h-20 w-20 fill-app-purple sm:h-32 sm:w-32"
+          className="fill-app-purple h-20 w-20 sm:h-32 sm:w-32"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 500 500"
@@ -51,15 +51,15 @@ export default function Blog() {
             />
           </g>
         </svg>
-        <p className="mt-4 text-3xl font-bold text-gray-500 md:text-4xl lg:text-5xl rtl:font-alef">
+        <p className="rtl:font-alef mt-4 text-3xl font-bold text-gray-500 md:text-4xl lg:text-5xl">
           {content.soon}
         </p>
-        <p className="mt-4 border-b-2 pb-4 text-center text-gray-500 rtl:font-rubik">
+        <p className="rtl:font-rubik mt-4 border-b-2 pb-4 text-center text-gray-500">
           {content.message}
         </p>
         <Link
           href=".."
-          className="mt-6 flex items-center space-x-2 rounded bg-app-pink px-4 py-2 text-gray-100 transition duration-150 hover:bg-app-blue"
+          className="bg-app-pink hover:bg-app-blue mt-6 flex items-center space-x-2 rounded-sm px-4 py-2 text-gray-100 transition duration-150"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
