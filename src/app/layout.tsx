@@ -57,7 +57,7 @@ export default async function RootLayout({
       dir={data.dir}
       className={`antialiased ${defaultFont.variable} ${rubikFont.variable} ${alefFont.variable}`}
     >
-      <body className="min-w-screen min-h-screen bg-white dark:bg-black">
+      <body className="min-h-screen min-w-screen bg-white dark:bg-black">
         {children}
         <SpeedInsights />
       </body>

@@ -33,7 +33,7 @@ export default async function Page({ params: { slug } }: { params: Params }) {
         {data.gallery && <ImageGallery gallery={data.gallery} />}
       </div>
 
-      <hr className="my-2 border-2 border-app-blue" />
+      <hr className="border-app-blue my-2 border-2" />
     </>
   );
 }
@@ -47,7 +47,7 @@ function ImageGallery({
 }) {
   return (
     <div
-      className={`h-56 w-56 object-fill sm:h-96 sm:w-96 lg:h-[40rem] lg:w-[40rem] ${
+      className={`h-56 w-56 object-fill sm:h-96 sm:w-96 lg:h-160 lg:w-160 ${
         className ?? ""
       }`}
     >

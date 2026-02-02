@@ -13,7 +13,7 @@ export async function SocialMedia({ className }: { className?: string }) {
         return (
           <a href={link} key={_id}>
             <span className="sr-only">{type}</span>
-            <Icon className="m-0.5 h-5 w-5 fill-app-purple hover:fill-app-pink sm:m-1.5 sm:h-7 sm:w-7" />
+            <Icon className="fill-app-purple hover:fill-app-pink m-0.5 h-5 w-5 sm:m-1.5 sm:h-7 sm:w-7" />
           </a>
         );
       })}

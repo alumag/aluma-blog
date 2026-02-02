@@ -20,20 +20,17 @@ export default async function Home() {
   return (
     <>
       <main className="container px-8 py-6 md:px-24">
-        <h1
-          className="bg-clip-content pb-2 text-center font-alef text-5xl font-extrabold
-        text-black underline decoration-app-pink hover:bg-app-pink dark:text-white"
-        >
+        <h1 className="font-alef decoration-app-pink hover:bg-app-pink bg-clip-content pb-2 text-center text-5xl font-extrabold text-black underline dark:text-white">
           {data.title}
         </h1>
         <SocialMedia />
         <Article>
           <PortableText value={data.body} />
         </Article>
-        <hr className="my-2 border-2 border-app-blue" />
+        <hr className="border-app-blue my-2 border-2" />
       </main>
       <footer className="fixed bottom-0 w-full">
-        <div className="h-12 w-full bg-gradient-to-t from-app-purple/60 to-transparent dark:from-app-purple/20" />
+        <div className="from-app-purple/60 dark:from-app-purple/20 h-12 w-full bg-linear-to-t to-transparent" />
       </footer>
     </>
   );
