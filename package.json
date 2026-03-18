@@ -31,7 +31,7 @@
     "flowbite": "^2.5.2",
     "flowbite-react": "^0.12.4",
     "lucide-react": "^0.454.0",
-    "next": "^14.2.14",
+    "next": "^16.1.7",
     "next-sanity": "^9.8.19",
     "next-sanity-image": "^6.1.1",
     "react": "^18.3.1",
