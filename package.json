@@ -23,7 +23,7 @@
     "@portabletext/react": "^3.1.0",
     "@sanity/client": "^6.22.5",
     "@sanity/document-internationalization": "^3.1.0",
-    "@sanity/image-url": "^1.1.0",
+    "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^3.65.1",
     "@vercel/speed-insights": "^1.0.14",
     "class-variance-authority": "^0.7.1",
